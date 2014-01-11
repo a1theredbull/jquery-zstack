@@ -15,9 +15,6 @@ Check out demo.html to see an example.
 
 ### Basic Usage
 
-jQuery is required.
-jQuery UI is optional for draggable elements.
-
 Give HTML elements the class "ol-able"
 
     <div class="ol-able">..some stuff..</div>
