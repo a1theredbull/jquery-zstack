@@ -8,26 +8,24 @@ function Overlapper() {
   this.init = function(options) {
     var self = this;
     overlappables = $('.ol-able');
-    if(settings) {
-      settings.zStart = options.zStart || 0;
-      settings.clickToFront = options.clickToFront || true;
+    settings.zStart = typeof options.zStart !== 'undefined' ? options.zStart : 0;
+    settings.clickToFront = typeof options.clickToFront !== 'undefined' ? options.clickToFront : true;
 
-      if(settings.clickToFront) {
-        for(var i = 0; i < overlappables.length; i++) {
-          var overlappable = $(overlappables[i]);
-          var zOffset = settings.zStart + i;
+    if(settings.clickToFront) {
+      for(var i = 0; i < overlappables.length; i++) {
+        var overlappable = $(overlappables[i]);
+        var zOffset = settings.zStart + i;
 
-          overlappable.css('z-index', zOffset);
+        overlappable.css('z-index', zOffset);
 
-          overlappable.on('click', function() {
-            self.moveToFront($(this));
-          });
+        overlappable.on('click', function() {
+          self.moveToFront($(this));
+        });
 
-          //register dragstart if jQueryUI draggable is being used
-          overlappable.on('dragstart', function() {
-            self.moveToFront($(this));
-          });
-        }
+        //register dragstart if jQueryUI draggable is being used
+        overlappable.on('dragstart', function() {
+          self.moveToFront($(this));
+        });
       }
     }
   }
