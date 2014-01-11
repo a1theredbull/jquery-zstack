@@ -7,7 +7,7 @@ Small javascript library to make z-index manipulation easier
 ### What does it do?
 
 Does stackable divs for you. Clicking a lower z-index element will bring it
-to the foreground and automatically manage the z-indexes of other elements of
+to the foreground and automatically manage the z-indices of other elements of
 class "ol-able".
 
 Works well with jQuery UI draggable elements.
@@ -41,15 +41,20 @@ This will initialize the DOM elements of class "ol-able" to start at z-index 4.
 
 ### Other Usage
 
-moveToBack(elem) - Want to move the DOM element to the back of the set? Register
-a custom event and call moveToBack(elem).
+Want custom events instead of click? Don't call init and register a custom event
+that uses moveToFront(elem). The library will continue managing z-indices.
 
     <div class="ol-able">..some stuff..</div>
     <div class="ol-able">..some other stuff..</div>
-    <div id="back-lurker" class="ol-able">..some stuff..</div>
+    <div id="front-runner" class="ol-able">..some stuff..</div>
 
     ...
-
-    $('#moveToBackBtn').click(function() {
-      overlapper.moveToBack($('#back-lurker'));
+    
+    var overlapper = new Overlapper();
+    
+    $('#moveToFrontBtn').click(function() {
+      overlapper.moveToFront($('#front-runner'));
     });
+
+Want to move the DOM element to the back of the set? Register a custom event and
+call moveToBack(elem) instead of moveToFront(elem).
