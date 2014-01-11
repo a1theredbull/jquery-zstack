@@ -3,7 +3,7 @@
   <title>Overlap.js Demo</title>
   <script src="jquery.js"></script>
   <script src="jquery-ui.js"></script>
-  <script src="jquery-overlap.js"></script>
+  <script src="jquery-zstack2.js"></script>
   <script>
     $(document).ready(function() {
       var cards = $('.card');
@@ -14,12 +14,8 @@
 
       $('.card').draggable();
 
-      var instance = new Overlapper();
-      instance.init({ zStart: 5 });
-
-      $('#backBtn').click(function() {
-        instance.moveToBack($('#back'));
-      });
+      $('.stackOne').zStack();
+      $('.stackTwo').zStack( { zStart: 3 } );
     });
   </script>
   <style>
@@ -36,21 +32,14 @@
       font-size: 24px;
       font-family: arial;
     }
-
-    #id {
-      text-align: center;
-      font-size: 24px;
-      color: white;
-    }
   </style>
 </head>
 <body>
-  <div class="ol-able card">DRAG ME</div>
-  <div class="ol-able card">DRAG ME</div>
-  <div id="back" class="ol-able card">PRESS MOVE TO BACK BUTTON</div>
-  <div class="ol-able card">DRAG ME</div>
-  <div class="ol-able card">DRAG ME</div>
-  <div class="ol-able card">DRAG ME</div>
-  <button id="backBtn">MOVE TO BACK</button>
+  <div class="stackOne card">Stack #1</div>
+  <div class="stackOne card">Stack #1</div>
+  <div class="stackOne card">Stack #1</div>
+  <div class="stackTwo card">Stack #2</div>
+  <div class="stackTwo card">Stack #2</div>
+  <div class="stackTwo card">Stack #2</div>
 </body>
 </html>
