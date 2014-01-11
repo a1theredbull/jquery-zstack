@@ -1,0 +1,56 @@
+<html>
+<head>
+  <title>Overlap.js Demo</title>
+  <script src="jquery.js"></script>
+  <script src="jquery-ui.js"></script>
+  <script src="overlap.js"></script>
+  <script>
+    $(document).ready(function() {
+      var cards = $('.card');
+
+      for(var i = 0; i < cards.length; i++) {
+        $(cards[i]).css('background-color', '#'+Math.floor(Math.random()*16777215).toString(16));
+      }
+
+      $('.card').draggable();
+
+      var instance = new Overlapper();
+      instance.init({ zStart: 5 });
+
+      $('#backBtn').click(function() {
+        instance.moveToBack($('#back'));
+      });
+    });
+  </script>
+  <style>
+   body {
+    background-color: black;
+   }
+
+   .card {
+      display: inline-block;
+      width: 200px;
+      height: 300px;
+      text-align: center;
+      color: white;
+      font-size: 24px;
+      font-family: arial;
+    }
+
+    #id {
+      text-align: center;
+      font-size: 24px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="ol-able card">DRAG ME</div>
+  <div class="ol-able card">DRAG ME</div>
+  <div id="back" class="ol-able card">PRESS MOVE TO BACK BUTTON</div>
+  <div class="ol-able card">DRAG ME</div>
+  <div class="ol-able card">DRAG ME</div>
+  <div class="ol-able card">DRAG ME</div>
+  <button id="backBtn">MOVE TO BACK</button>
+</body>
+</html>
