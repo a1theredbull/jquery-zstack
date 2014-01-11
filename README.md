@@ -2,13 +2,12 @@
 
 ### Description 
 
-Small javascript library to make z-index manipulation easier
+Overlap.js is a small jQuery plugin that provides the ability to manage z-indices.
 
 ### What does it do?
 
-Does stackable divs for you. Clicking a lower z-index element will bring it
-to the foreground and automatically manage the z-indices of other elements of
-class "ol-able".
+The plugin provides an easier solution to manage z-indices on documents that utilize
+overlapping DOM elements.
 
 Works well with jQuery UI draggable elements.
 
@@ -28,6 +27,9 @@ Initialize in javascript
 
     var overlapper = new Overlapper();
     overlapper.init();
+
+Calling init will register click events on all given elements.  Clicking an element
+will push it to the top of the z-index order stack.
 
 ### Options
 
