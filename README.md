@@ -21,21 +21,21 @@ jQueryUI is optional for draggable elements.
 
 Give HTML elements the class "ol-able"
 
-  <div class="ol-able">..some stuff..</div>
-  <div class="ol-able">..some other stuff..</div>
+    <div class="ol-able">..some stuff..</div>
+    <div class="ol-able">..some other stuff..</div>
 
 Initialize in javascript
 
-  var overlapper = new Overlapper();
-  overlapper.init();
+    var overlapper = new Overlapper();
+    overlapper.init();
 
 ### Options
 
 Currently only one option exists:
 
-startZ
+zStart
 
-  overlapper.init({ startZ: 4 })
+    overlapper.init({ zStart: 4 })
 
 This will initialize the DOM elements of class "ol-able" to start at z-index 4.
 
@@ -44,12 +44,12 @@ This will initialize the DOM elements of class "ol-able" to start at z-index 4.
 moveToBack(elem) - Want to move the DOM element to the back of the set? Register
 a custom event and call moveToBack(elem).
 
-  <div class="ol-able">..some stuff..</div>
-  <div class="ol-able">..some other stuff..</div>
-  <div id="back-lurker" class="ol-able">..some stuff..</div>
+    <div class="ol-able">..some stuff..</div>
+    <div class="ol-able">..some other stuff..</div>
+    <div id="back-lurker" class="ol-able">..some stuff..</div>
 
-  ...
+    ...
 
-  $('#moveToBackBtn').click(function() {
-    overlapper.moveToBack($('#back-lurker'));
-  });
+    $('#moveToBackBtn').click(function() {
+      overlapper.moveToBack($('#back-lurker'));
+    });
