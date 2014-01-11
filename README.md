@@ -1,7 +1,8 @@
 ## jquery-zstack
 
 Need a document with a many overlapping DOM elements?  This jQuery plugin manages one or more stacks of these
-elements through z-indices.  It provides the ability to push bottom elements to the top of the z-index stack.
+elements through z-indices.  It provides the ability to push bottom elements to the top of the z-index stack
+while maintaining the other z-indices in the stack.
 
 Works well with jQuery UI draggable elements.
 An example is available in demo.html.
