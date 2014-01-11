@@ -1,59 +1,37 @@
-## Overlap.js
+## jquery-zstack
 
-### Description 
-
-Overlap.js is a small jQuery plugin that provides the ability to manage z-indices.
-
-### What does it do?
-
-The plugin provides an easier solution to manage z-indices on documents that utilize
-overlapping DOM elements.
+Need a document with a many overlapping DOM elements?  This jQuery plugin manages one or more stacks of these
+elements through z-indices.  It provides the ability to push bottom elements to the top of the z-index stack.
 
 Works well with jQuery UI draggable elements.
-
-Check out demo.html to see an example.
+An example is available in demo.html.
 
 ### Basic Usage
 
-Give HTML elements the class "ol-able"
+Include jQuery and jquery-zstack
 
-    <div class="ol-able">..some stuff..</div>
-    <div class="ol-able">..some other stuff..</div>
+    <script src="jquery.js"></script>
+    <script src="jquery-zstack.js"></script>
+    
+Give same class to a stack
 
+    <div class="stackOne">...</div>
+    <div class="stackOne">...</div>
+    <div class="stackOne">...</div>
+    <div class="stackTwo">...</div>
+    <div class="stackTwo">...</div>
+    
 Initialize in javascript
 
-    var overlapper = new Overlapper();
-    overlapper.init();
-
-Calling init will register click events on all given elements.  Clicking an element
-will push it to the top of the z-index order stack.
-
+    $('.stackOne').zStack();
+    $('.stackTwo').zStack( { zStart: 3 } );
+    
 ### Options
 
-Currently only one option exists:
+#### trigger (default: 'click', 'hover')
+The trigger to move the element to the top of the stack.
 
-zStart
+#### zStart (default: 0)
+The z-index to start the stack on.
 
-    overlapper.init({ zStart: 4 })
 
-This will initialize the DOM elements of class "ol-able" to start at z-index 4.
-
-### Other Usage
-
-Want custom events instead of click? Don't call init and register a custom event
-that uses moveToFront(elem). The library will continue managing z-indices.
-
-    <div class="ol-able">..some stuff..</div>
-    <div class="ol-able">..some other stuff..</div>
-    <div id="front-runner" class="ol-able">..some stuff..</div>
-
-    ...
-    
-    var overlapper = new Overlapper();
-    
-    $('#moveToFrontBtn').click(function() {
-      overlapper.moveToFront($('#front-runner'));
-    });
-
-Want to move the DOM element to the back of the set? Register a custom event and
-call moveToBack(elem) instead of moveToFront(elem).
