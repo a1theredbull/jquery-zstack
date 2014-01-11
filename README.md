@@ -10,14 +10,14 @@ Does stackable divs for you. Clicking a lower z-index element will bring it
 to the foreground and automatically manage the z-indexes of other elements of
 class "ol-able".
 
-Works well with jqueryUI draggable elements.
+Works well with jQuery UI draggable elements.
 
 Check out demo.html to see an example.
 
 ### Basic Usage
 
 jQuery is required.
-jQueryUI is optional for draggable elements.
+jQuery UI is optional for draggable elements.
 
 Give HTML elements the class "ol-able"
 
