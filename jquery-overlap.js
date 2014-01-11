@@ -1,16 +1,41 @@
 function Overlapper() {
-  var overlappables = $('.ol-able');
-  var zStart = 0;
+  var overlappables;
+  var settings = {
+    zStart: 0,
+    clickToFront: true
+  };
 
-  this.init = function(settings) {
+  this.init = function(options) {
     var self = this;
+    overlappables = $('.ol-able');
     if(settings) {
-      zStart = settings.zStart || 0;
-    }
+      settings.zStart = options.zStart || 0;
+      settings.clickToFront = options.clickToFront || true;
 
+      if(settings.clickToFront) {
+        for(var i = 0; i < overlappables.length; i++) {
+          var overlappable = $(overlappables[i]);
+          var zOffset = settings.zStart + i;
+
+          overlappable.css('z-index', zOffset);
+
+          overlappable.on('click', function() {
+            self.moveToFront($(this));
+          });
+
+          //register dragstart if jQueryUI draggable is being used
+          overlappable.on('dragstart', function() {
+            self.moveToFront($(this));
+          });
+        }
+      }
+    }
+  }
+
+  this.clickToFront = function() {
     for(var i = 0; i < overlappables.length; i++) {
       var overlappable = $(overlappables[i]);
-      var zOffset = zStart + i;
+      var zOffset = settings.zStart + i;
 
       overlappable.css('z-index', zOffset);
 
@@ -27,7 +52,7 @@ function Overlapper() {
 
   this.moveToFront = function(elem) {
     var oldZ = elem.css('z-index');
-    elem.css('z-index', zStart + overlappables.length);
+    elem.css('z-index', settings.zStart + overlappables.length);
     for(var i = 0; i < overlappables.length; i++) {
       var overlappable = $(overlappables[i]);
       if(+overlappable.css('z-index') != oldZ && +overlappable.css('z-index') > +oldZ) {
@@ -45,6 +70,6 @@ function Overlapper() {
       }
     }
 
-     elem.css('z-index', zStart);
+     elem.css('z-index', settings.zStart);
   }
 }
